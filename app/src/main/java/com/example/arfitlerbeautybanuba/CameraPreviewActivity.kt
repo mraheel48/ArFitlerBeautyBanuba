@@ -18,7 +18,9 @@ class CameraPreviewActivity : AppCompatActivity() {
 
     companion object {
 
-        private const val MASK_NAME = "TrollGrandma"
+       /* private const val MASK_NAME = "TrollGrandma"
+        private const val MASK_NAME = "PineappleGlasses"*/
+        private const val MASK_NAME = "DebugWireframe"
 
         private const val REQUEST_CODE_APPLY_MASK_PERMISSION = 1001
 
