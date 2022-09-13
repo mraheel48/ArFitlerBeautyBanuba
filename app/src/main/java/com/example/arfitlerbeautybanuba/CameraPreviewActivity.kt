@@ -10,19 +10,22 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.banuba.sdk.effect_player.Effect
+import com.banuba.sdk.effect_player.EffectManager
 import com.banuba.sdk.manager.BanubaSdkManager
 import com.banuba.sdk.manager.BanubaSdkTouchListener
+import com.banuba.sdk.scene.FaceMorphing
+import com.banuba.sdk.scene.MorphingType
 import com.example.arfitlerbeautybanuba.databinding.ActivityCameraPreviewBinding
 
 class CameraPreviewActivity : AppCompatActivity() {
 
     companion object {
 
-      /*  private const val MASK_NAME = "TrollGrandma"
-        private const val MASK_NAME = "PineappleGlasses"
-        private const val MASK_NAME = "DebugWireframe"
-        private const val MASK_NAME = "Beauty"
-        private const val MASK_NAME = "HairGradient_Avocado"*/
+        /*  private const val MASK_NAME = "TrollGrandma"
+          private const val MASK_NAME = "PineappleGlasses"
+          private const val MASK_NAME = "DebugWireframe"
+          private const val MASK_NAME = "Beauty"
+          private const val MASK_NAME = "HairGradient_Avocado"*/
 
         private const val MASK_NAME = "DebugWireframe"
 
@@ -45,8 +48,8 @@ class CameraPreviewActivity : AppCompatActivity() {
 
     private var shouldApply = false
     private var effect: Effect? = null
-
     lateinit var binding: ActivityCameraPreviewBinding
+
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,15 +57,38 @@ class CameraPreviewActivity : AppCompatActivity() {
         binding = ActivityCameraPreviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         // Set custom OnTouchListener to change mask style.
-        binding.surfaceView.setOnTouchListener(BanubaSdkTouchListener(this, banubaSdkManager.effectPlayer))
+        binding.surfaceView.setOnTouchListener(
+            BanubaSdkTouchListener(
+                this,
+                banubaSdkManager.effectPlayer
+            )
+        )
 
         binding.showMaskButton.setOnClickListener {
             shouldApply = !shouldApply
             updateUIState()
             if (shouldApply) {
                 // The mask is loaded asynchronously and applied
-                effect = banubaSdkManager.effectManager.loadAsync(maskUri.toString())
+
+                effect?.evalJs("Skin.softening(1)", null);
+                banubaSdkManager.loadEffect(effect.toString(), true)
+                //effect = banubaSdkManager.effectManager.loadAsync(maskUri.toString())
+
+                //effect = banubaSdkManager.effectManager.loadAsync(maskUri.toString())
+                /* effect?.evalJs("FaceMorph.lips(1)", null)
+                 effect?.evalJs("FaceMorph.eyes(0.6)", null);
+                 effect?.evalJs("FaceMorph.face(0.5)", null);
+                 effect?.evalJs("FaceMorph.nose(1)", null);
+                 effect?.evalJs("FaceMorph.lips(1)", null);
+                 banubaSdkManager.effectManager.setCurrentEffect(effect)*/
+
+                //effect = banubaSdkManager.loadEffect("FaceMorph.lips(1)", true)
+                //effect?.evalJs("FaceMorph.eyes(0.6)", null)
+                //effect?.evalJs("FaceMorph.lips(1)", null);
+                // banubaSdkManager.loadEffect(effect.toString(),false)
+                // banubaSdkManager.effectManager.loadAsync(effect.toString())
             } else {
                 // The mask is unloaded
                 banubaSdkManager.effectManager.loadAsync("")

@@ -71,7 +71,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0"
 
     // Banuba SDK dependencies
-    //implementation "com.banuba.sdk:banuba_sdk:0.38.6"
+//    implementation "com.banuba.sdk:banuba_sdk:0.38.6"
     // Banuba SDK dependencies
     implementation "com.banuba.sdk:banuba_sdk:1.5.0"
 
