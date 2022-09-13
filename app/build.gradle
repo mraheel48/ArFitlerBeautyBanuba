@@ -42,11 +42,27 @@ android {
             }
         }
     }
+
+    packagingOptions {
+        pickFirst '**/*.so'
+    }
 }
 
 dependencies {
 
-    implementation "androidx.core:core-ktx:1.7.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.20"
+
+    // Banuba Face AR SDK dependencies
+    implementation fileTree(dir: '../libs', include: ['*.aar'])
+
+    // Koin AndroidX Scope features
+    // Koin for Kotlin apps
+    implementation "io.insert-koin:koin-core:3.2.0"
+
+   /* implementation "org.koin:koin-android-scope:2.0.0"
+    testImplementation "org.koin:koin-test:2.0.0"*/
+
+    implementation "androidx.core:core-ktx:1.6.0"
     implementation "androidx.appcompat:appcompat:1.4.1"
     implementation "com.google.android.material:material:1.6.1"
     implementation "androidx.constraintlayout:constraintlayout:2.1.4"
@@ -55,7 +71,27 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0"
 
     // Banuba SDK dependencies
-    //implementation "com.banuba.sdk:banuba_sdk:1.5.0"
+    //implementation "com.banuba.sdk:banuba_sdk:0.38.6"
     // Banuba SDK dependencies
     implementation "com.banuba.sdk:banuba_sdk:1.5.0"
+
+    // Banuba Video Editor SDK dependencies
+    /*def banubaSdkVersion = '1.24.2'
+    implementation "com.banuba.sdk:ffmpeg:4.4"
+    implementation "com.banuba.sdk:camera-sdk:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:camera-ui-sdk:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:core-sdk:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:core-ui-sdk:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:ve-flow-sdk:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:ve-timeline-sdk:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:ve-sdk:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:ve-ui-sdk:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:ve-gallery-sdk:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:ve-effects-sdk:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:effect-player-adapter:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:ar-cloud:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:ve-audio-browser-sdk:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:banuba-token-storage-sdk:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:ve-export-sdk:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:ve-playback-sdk:${banubaSdkVersion}"*/
 }

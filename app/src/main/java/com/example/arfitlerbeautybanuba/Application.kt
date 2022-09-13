@@ -1,11 +1,13 @@
 package com.example.arfitlerbeautybanuba
 
 import com.banuba.sdk.manager.BanubaSdkManager
+import org.koin.core.context.startKoin
 
 class Application : android.app.Application() {
 
     override fun onCreate() {
         super.onCreate()
+
 
         // It crashes if token is empty string with
         //
