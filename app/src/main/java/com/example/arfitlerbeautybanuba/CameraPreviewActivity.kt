@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.banuba.sdk.effect_player.Effect
@@ -27,7 +28,7 @@ class CameraPreviewActivity : AppCompatActivity() {
           private const val MASK_NAME = "Beauty"
           private const val MASK_NAME = "HairGradient_Avocado"*/
 
-        private const val MASK_NAME = "DebugWireframe"
+        private const val MASK_NAME = "TrollGrandma"
 
         private const val REQUEST_CODE_APPLY_MASK_PERMISSION = 1001
 
@@ -74,27 +75,35 @@ class CameraPreviewActivity : AppCompatActivity() {
             if (shouldApply) {
                 // The mask is loaded asynchronously and applied
 
-                effect = banubaSdkManager.loadEffect(BanubaSdkManager.getResourcesBase() + "/effects/Makeup", false)
+                effect = banubaSdkManager.loadEffect(
+                    BanubaSdkManager.getResourcesBase() + "/effects/Makeup",
+                    false
+                )
 
-                effect?.evalJs("FaceMorph.eyes(0.6)", null)
+                var bacImg: String = BanubaSdkManager.getResourcesBase() + "/effects/watermark.png"
 
-                /*effect?.evalJs("Skin.softening(1)", null);
-                banubaSdkManager.loadEffect(effect.toString(), true)*/
-                //effect = banubaSdkManager.effectManager.loadAsync(maskUri.toString())
+                Log.d("myPath","${bacImg}")
+//                effect?.evalJs("Background.texture('bacImg')", null);
+                //effect?.evalJs("Background.transparency(1)", null);
+//                effect?.evalJs("Background.blur(1)", null);
+                //effect?.evalJs("Background.clear()", null);
+//                effect?.evalJs("Hair.color('0.39 0.14 0.14 0.8')", null);
+//                effect?.evalJs("Hair.color('0.19 0.06 0.25', '0.09 0.25 0.38')", null);
+//                effect?.evalJs("Hair.strands('0.80 0.40 0.40 1.0', '0.83 0.40 0.40 1.0', '0.85 0.75 0.75 1.0', '0.87 0.60 0.60 1.0', '0.99 0.65 0.65 1.0')", null);
 
-                //effect = banubaSdkManager.effectManager.loadAsync(maskUri.toString())
-                /* effect?.evalJs("FaceMorph.lips(1)", null)
-                 effect?.evalJs("FaceMorph.eyes(0.6)", null);
-                 effect?.evalJs("FaceMorph.face(0.5)", null);
-                 effect?.evalJs("FaceMorph.nose(1)", null);
-                 effect?.evalJs("FaceMorph.lips(1)", null);
-                 banubaSdkManager.effectManager.setCurrentEffect(effect)*/
+                /* effect?.evalJs("Teeth.whitening(1)", null);
+                effect?.evalJs("FaceMorph.eyes(0.6)", null);
+                effect?.evalJs("FaceMorph.face(0.5)", null);
+                effect?.evalJs("FaceMorph.nose(1)", null);
+                effect?.evalJs("FaceMorph.lips(1)", null);*/
 
-                //effect = banubaSdkManager.loadEffect("FaceMorph.lips(1)", true)
-                //effect?.evalJs("FaceMorph.eyes(0.6)", null)
-                //effect?.evalJs("FaceMorph.lips(1)", null);
-                // banubaSdkManager.loadEffect(effect.toString(),false)
-                // banubaSdkManager.effectManager.loadAsync(effect.toString())
+//                effect?.evalJs("Skin.softening(1)", null);
+                //Skin.color("R G B A") - set skin color in R G B A format (separated with space). Each value should be in a rage from 0 to 1 (including decimal),
+//                effect?.evalJs("Skin.color('0.8 0.6 0.1 0.4')", null);
+
+
+                effect = banubaSdkManager.loadEffect(maskUri.toString(),true)
+
             } else {
                 // The mask is unloaded
                 banubaSdkManager.effectManager.loadAsync("")
