@@ -136,10 +136,12 @@ class CameraPreviewActivity : AppCompatActivity() {
                 effect?.evalJs("Lips.glitterBleeding(1)", null);*/
 
                 //Combine
-                effect?.evalJs("Lips.matt('0.85 0.23 0.2 0.8')", null);
+                /*effect?.evalJs("Lips.matt('0.85 0.23 0.2 0.8')", null);
                 effect?.evalJs("Makeup.eyeshadow('0.6 0.5 1 0.6')", null);
                 effect?.evalJs("Eyes.color('0 0.2 0.8 0.64')", null);
-                effect?.evalJs("Makeup.contour('0.3 0.1 0.1 0.2')", null);
+                effect?.evalJs("Makeup.contour('0.3 0.1 0.1 0.2')", null);*/
+
+                effect?.evalJs("Background.transparency(1)", null);
 
 
             } else {
