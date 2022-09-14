@@ -66,14 +66,20 @@ class CameraPreviewActivity : AppCompatActivity() {
             )
         )
 
+        banubaSdkManager.attachSurface(binding.surfaceView)
+
         binding.showMaskButton.setOnClickListener {
             shouldApply = !shouldApply
             updateUIState()
             if (shouldApply) {
                 // The mask is loaded asynchronously and applied
 
-                effect?.evalJs("Skin.softening(1)", null);
-                banubaSdkManager.loadEffect(effect.toString(), true)
+                effect = banubaSdkManager.loadEffect(BanubaSdkManager.getResourcesBase() + "/effects/Makeup", false)
+
+                effect?.evalJs("FaceMorph.eyes(0.6)", null)
+
+                /*effect?.evalJs("Skin.softening(1)", null);
+                banubaSdkManager.loadEffect(effect.toString(), true)*/
                 //effect = banubaSdkManager.effectManager.loadAsync(maskUri.toString())
 
                 //effect = banubaSdkManager.effectManager.loadAsync(maskUri.toString())
