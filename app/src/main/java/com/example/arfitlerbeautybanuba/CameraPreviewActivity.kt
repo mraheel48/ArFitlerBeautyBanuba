@@ -82,7 +82,7 @@ class CameraPreviewActivity : AppCompatActivity() {
 
                 var bacImg: String = BanubaSdkManager.getResourcesBase() + "/effects/watermark.png"
 
-                Log.d("myPath","${bacImg}")
+                Log.d("myPath", "${bacImg}")
 //                effect?.evalJs("Background.texture('bacImg')", null);
                 //effect?.evalJs("Background.transparency(1)", null);
 //                effect?.evalJs("Background.blur(1)", null);
@@ -101,8 +101,46 @@ class CameraPreviewActivity : AppCompatActivity() {
                 //Skin.color("R G B A") - set skin color in R G B A format (separated with space). Each value should be in a rage from 0 to 1 (including decimal),
 //                effect?.evalJs("Skin.color('0.8 0.6 0.1 0.4')", null);
 
+                //effect = banubaSdkManager.loadEffect(maskUri.toString(),true)
 
-                effect = banubaSdkManager.loadEffect(maskUri.toString(),true)
+//                effect?.evalJs("Eyes.color('0 0.2 0.8 0.64')", null);
+                //effect?.evalJs("Eyes.flare(1)", null);
+//                effect?.evalJs("Eyes.whitening(1)", null);
+//                effect?.evalJs("EyeBagsRemoval.enable()", null);
+
+//                effect?.evalJs("Makeup.highlighter('0.75 0.74 0.74 0.4')", null);
+//                effect?.evalJs("Makeup.highlighter('0.75 0.74 0.74 0.4')", null);
+
+                // set skin color
+//                effect?.evalJs("Skin.color('0.73 0.39 0.08 0.3')", null);
+                // set softening strength (skin smoothing)
+//                effect?.evalJs("Skin.softening(1)", null);
+//                effect?.evalJs("Makeup.blushes('0.7 0.1 0.2 0.5')", null);
+//                effect?.evalJs("Brows.color('0.172 0.125 0.105 0.732')", null);
+//                effect?.evalJs("Makeup.eyeliner('0 0 0')", null);
+//                effect?.evalJs("Makeup.eyeshadow('0.6 0.5 1 0.6')", null);
+//                effect?.evalJs("Makeup.lashes('0 0 0')", null);
+
+
+//                effect?.evalJs("Lips.matt('0.85 0.43 0.5 0.8')", null);
+//                effect?.evalJs("Lips.shiny('1 0 0.49 1')", null);
+//                effect?.evalJs("Lips.glitter('0.552 0 0 1')", null);
+               /* effect?.evalJs("Lips.color('1 0 0 1')", null);
+                effect?.evalJs("Lips.brightness(1)", null);
+                effect?.evalJs("Lips.saturation(1)", null);
+                effect?.evalJs("Lips.shineIntensity(2)", null);
+                effect?.evalJs("Lips.shineBleeding(1)", null);
+                effect?.evalJs("Lips.shineScale(1)", null);
+                effect?.evalJs("Lips.glitterGrain(1)", null);
+                effect?.evalJs("Lips.glitterIntensity(1)", null);
+                effect?.evalJs("Lips.glitterBleeding(1)", null);*/
+
+                //Combine
+                effect?.evalJs("Lips.matt('0.85 0.23 0.2 0.8')", null);
+                effect?.evalJs("Makeup.eyeshadow('0.6 0.5 1 0.6')", null);
+                effect?.evalJs("Eyes.color('0 0.2 0.8 0.64')", null);
+                effect?.evalJs("Makeup.contour('0.3 0.1 0.1 0.2')", null);
+
 
             } else {
                 // The mask is unloaded
